@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1020" />
+    <title>Fraud Detection Engine | Risk Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Fraud detection dashboard home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="brand-copy"><strong>Sentinel</strong><small>FRAUD INTELLIGENCE</small></span>
+        </a>
+        <div class="sidebar-label">WORKSPACE</div>
+        <nav class="nav-list">
+          <a class="nav-item active" href="#dashboard"><span class="nav-icon">◫</span>Risk console</a>
+          <a class="nav-item" href="/docs" target="_blank" rel="noreferrer"><span class="nav-icon">↗</span>API documentation</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="connection"><span class="status-dot"></span><span><strong>Engine online</strong><small>Local API connection</small></span></div>
+          <div class="sidebar-note">Risk intelligence<br /><strong>Built for decisive action.</strong></div>
+          <div class="user-chip"><span class="avatar">FD</span><span><strong>Fraud Ops</strong><small>Analyst workspace</small></span><span class="user-menu">···</span></div>
+        </div>
+      </aside>
+
+      <main class="main-content" id="top">
+        <header class="topbar">
+          <div class="breadcrumbs">Workspace <span>/</span> Risk console</div>
+          <div class="topbar-right"><span class="environment"><span class="status-dot"></span>LOCAL ENVIRONMENT</span><button class="icon-button" type="button" aria-label="Notifications">♧<i></i></button><span class="top-avatar">FD</span></div>
+        </header>
+
+        <section class="page-heading" id="dashboard">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span>TRANSACTION INTELLIGENCE</div>
+            <h1>Risk console<span class="heading-period">.</span></h1>
+            <p>Monitor automated transaction traffic, decisions, and fraud-risk signals in real time.</p>
+          </div>
+          <div class="heading-date"><span class="calendar-icon">▦</span><span><small>SCORING SERVICE</small><strong>Ready for analysis</strong></span></div>
+        </section>
+
+        <section class="summary-grid stats-grid" aria-label="Live scoring statistics">
+          <article class="summary-card metric-card"><div class="summary-top"><span>TRANSACTIONS SCORED</span><span class="summary-icon purple">↗</span></div><div class="summary-value" id="metric-total">0</div><div class="summary-foot">Since engine startup</div></article>
+          <article class="summary-card metric-card"><div class="summary-top"><span>APPROVAL RATE</span><span class="summary-icon teal">✓</span></div><div class="summary-value" id="metric-approval-rate">0% <small>of decisions</small></div><div class="metric-track"><span id="metric-approval-bar"></span></div></article>
+          <article class="summary-card metric-card"><div class="summary-top"><span>FRAUD-RISK DETECTION</span><span class="summary-icon red">⌁</span></div><div class="summary-value" id="metric-detection-rate">0% <small>flagged</small></div><div class="summary-foot" id="metric-flagged-count">0 high-risk decisions</div></article>
+        </section>
+
+        <section class="chart-grid" aria-label="Channel and decision breakdowns">
+          <article class="panel chart-panel"><div class="chart-heading"><div><div class="section-kicker">CHANNEL MIX</div><h2>Transactions by channel</h2></div><span class="chart-subtitle">Card · Transfer · Mobile</span></div><div id="channel-chart" class="bar-chart"></div></article>
+          <article class="panel chart-panel"><div class="chart-heading"><div><div class="section-kicker">DECISION MIX</div><h2>Scoring outcomes</h2></div><span class="chart-subtitle">Approve · Review · Decline</span></div><div id="decision-chart" class="bar-chart decision-chart"></div></article>
+        </section>
+
+        <section class="panel simulator-panel" aria-labelledby="simulator-title">
+          <div class="simulator-heading">
+            <div><div class="section-kicker">CONTINUOUS AUTOMATED TRAFFIC</div><h2 id="simulator-title">Live transaction simulator</h2><p>The engine continuously generates and scores synthetic card, transfer, and mobile transactions while this app is running.</p></div>
+            <span class="simulator-live"><i></i><span id="simulator-status">READY</span></span>
+          </div>
+          <div class="simulator-progress" aria-live="polite">
+            <div class="simulator-progress-top"><span id="sim-progress-label">Connecting to background simulator…</span><span id="sim-progress-count">0 generated</span></div>
+            <div class="simulator-progress-track live-track"><div id="sim-progress-bar"></div></div>
+            <div class="simulator-totals"><span>Approved <strong id="sim-approved">0</strong></span><span>Review <strong id="sim-review">0</strong></span><span>Declined <strong id="sim-declined">0</strong></span><span>Errors <strong id="sim-errors">0</strong></span></div>
+          </div>
+          <div id="sim-results" class="sim-results" aria-label="Live simulated transaction results"><div class="sim-empty">Waiting for the engine to generate the first transaction…</div></div>
+        </section>
+
+        <footer class="page-footer"><span>Sentinel Risk Console <span class="footer-dot">·</span> Portfolio demo</span><span>Secure local scoring <span class="footer-lock">⌑</span></span></footer>
+      </main>
+    </div>
+  </body>
+</html>

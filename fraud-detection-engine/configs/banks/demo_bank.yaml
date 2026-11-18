@@ -1,0 +1,81 @@
+bank_name: demo-bank
+thresholds:
+  approve_max: 0.18
+  review_max: 0.50
+  decline_min: 0.78
+rules:
+  unusually_high_amount:
+    enabled: true
+    thresholds:
+      card: 3000
+      transfer: 3000
+      mobile: 2000
+    risk_contribution: 0.20
+    reason: demo_unusually_high_amount
+  unusual_hour:
+    enabled: true
+    start_hour: 1
+    end_hour: 5
+    risk_contribution: 0.14
+    reason: demo_transaction_at_unusual_hour
+  high_velocity:
+    enabled: true
+    count_threshold: 5
+    risk_contribution: 0.36
+    reason: demo_high_transaction_velocity
+  card_high_risk_merchant_category:
+    enabled: true
+    categories: [gambling, cryptocurrency, money_transfer]
+    risk_contribution: 0.28
+    reason: demo_high_risk_merchant_category
+  card_not_present_high_amount:
+    enabled: false
+    threshold: 750
+    risk_contribution: 0.30
+    reason: demo_card_not_present_and_high_amount
+  card_location_inconsistency:
+    enabled: true
+    risk_contribution: 0.15
+    reason: demo_card_location_mismatch
+  transfer_new_beneficiary_high_amount:
+    enabled: true
+    threshold: 500
+    risk_contribution: 0.40
+    reason: demo_high_amount_to_new_beneficiary
+  first_time_international_transfer:
+    enabled: true
+    risk_contribution: 0.32
+    reason: demo_first_international_transfer
+  high_amount_to_new_account:
+    enabled: true
+    threshold: 1500
+    max_account_age_days: 30
+    risk_contribution: 0.32
+    reason: demo_high_amount_to_new_account
+  mobile_new_device_high_amount:
+    enabled: true
+    threshold: 600
+    risk_contribution: 0.36
+    reason: demo_new_device_high_amount
+  mobile_high_risk_country:
+    enabled: true
+    countries: []
+    risk_contribution: 0.36
+    reason: demo_mobile_unusual_country
+  mobile_unusual_hour_high_amount:
+    enabled: true
+    start_hour: 1
+    end_hour: 5
+    threshold: 1000
+    risk_contribution: 0.28
+    reason: demo_mobile_unusual_hour_and_high_amount
+  repeated_failed_attempts:
+    enabled: true
+    threshold: 3
+    risk_contribution: 0.12
+    reason: demo_repeated_failed_attempts
+  mobile_integrity_failure:
+    enabled: true
+    risk_contribution: 0.80
+    decision: decline
+    reason: mobile_device_integrity_check_failed

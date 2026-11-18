@@ -1,0 +1,81 @@
+bank_name: default
+thresholds:
+  approve_max: 0.20
+  review_max: 0.55
+  decline_min: 0.80
+rules:
+  unusually_high_amount:
+    enabled: true
+    thresholds:
+      card: 4000
+      transfer: 5000
+      mobile: 3000
+    risk_contribution: 0.16
+    reason: unusually_high_transaction_amount
+  unusual_hour:
+    enabled: true
+    start_hour: 1
+    end_hour: 5
+    risk_contribution: 0.12
+    reason: transaction_at_unusual_hour
+  high_velocity:
+    enabled: true
+    count_threshold: 6
+    risk_contribution: 0.32
+    reason: high_transaction_velocity
+  card_high_risk_merchant_category:
+    enabled: true
+    categories: [gambling, cryptocurrency, money_transfer]
+    risk_contribution: 0.24
+    reason: high_risk_merchant_category
+  card_not_present_high_amount:
+    enabled: true
+    threshold: 750
+    risk_contribution: 0.28
+    reason: card_not_present_and_high_amount
+  card_location_inconsistency:
+    enabled: true
+    risk_contribution: 0.28
+    reason: card_location_does_not_match_ip
+  transfer_new_beneficiary_high_amount:
+    enabled: true
+    threshold: 750
+    risk_contribution: 0.34
+    reason: high_amount_to_new_beneficiary
+  first_time_international_transfer:
+    enabled: true
+    risk_contribution: 0.28
+    reason: first_time_international_transfer
+  high_amount_to_new_account:
+    enabled: true
+    threshold: 2000
+    max_account_age_days: 45
+    risk_contribution: 0.28
+    reason: high_amount_to_recently_opened_account
+  mobile_new_device_high_amount:
+    enabled: true
+    threshold: 800
+    risk_contribution: 0.30
+    reason: high_amount_from_new_mobile_device
+  mobile_high_risk_country:
+    enabled: true
+    countries: []
+    risk_contribution: 0.30
+    reason: mobile_transaction_from_unusual_country
+  mobile_unusual_hour_high_amount:
+    enabled: true
+    start_hour: 1
+    end_hour: 5
+    threshold: 1500
+    risk_contribution: 0.24
+    reason: high_amount_mobile_transaction_at_unusual_hour
+  repeated_failed_attempts:
+    enabled: true
+    threshold: 4
+    risk_contribution: 0.10
+    reason: repeated_failed_authentication_attempts
+  mobile_integrity_failure:
+    enabled: true
+    risk_contribution: 0.75
+    decision: decline
+    reason: mobile_device_integrity_check_failed

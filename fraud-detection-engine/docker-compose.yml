@@ -1,0 +1,15 @@
+services:
+  fraud-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      FRAUD_API_KEY: ${FRAUD_API_KEY:-dev-only-change-me}
+      FRAUD_ENVIRONMENT: ${FRAUD_ENVIRONMENT:-development}
+      FRAUD_FRAUD_THRESHOLD: ${FRAUD_FRAUD_THRESHOLD:-0.7}
+      FRAUD_BANK_CONFIG_PATH: configs/banks/default.yaml
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 30s
+      timeout: 3s
+      retries: 3

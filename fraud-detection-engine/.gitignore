@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+*.joblib
+*.pkl
+*.pickle
+data/raw/**
+data/processed/**
+data/synthetic/**
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/synthetic/.gitkeep
+app/ml/models/*
+!app/ml/models/.gitkeep

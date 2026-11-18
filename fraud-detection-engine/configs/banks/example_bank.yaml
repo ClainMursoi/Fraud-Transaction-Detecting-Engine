@@ -1,0 +1,87 @@
+bank_name: example-bank
+thresholds:
+  approve_max: 0.30
+  review_max: 0.75
+  decline_min: 0.75
+decision:
+  review_threshold: 0.65
+  decline_threshold: 0.88
+rules:
+  card_high_amount:
+    enabled: true
+    threshold: 3000
+    risk_contribution: 0.35
+    decision: review
+    reason: bank_high_amount
+  card_unusual_hour:
+    enabled: true
+    start_hour: 1
+    end_hour: 5
+    risk_contribution: 0.25
+    reason: card_transaction_at_unusual_hour
+  card_high_risk_merchant_category:
+    enabled: true
+    categories: [gambling, cryptocurrency, money_transfer]
+    risk_contribution: 0.40
+    reason: high_risk_merchant_category
+  card_not_present_high_amount:
+    enabled: true
+    threshold: 750
+    risk_contribution: 0.35
+    reason: card_not_present_high_amount
+  transfer_high_amount:
+    enabled: true
+    threshold: 3000
+    risk_contribution: 0.35
+    reason: bank_high_transfer_amount
+  transfer_new_beneficiary:
+    enabled: true
+    risk_contribution: 0.45
+    reason: transfer_to_new_beneficiary
+  international_transfer:
+    enabled: true
+    risk_contribution: 0.40
+    reason: international_transfer
+  high_transfer_velocity:
+    enabled: true
+    threshold: 4
+    risk_contribution: 0.45
+    reason: high_transfer_velocity
+  mobile_high_amount:
+    enabled: true
+    threshold: 2500
+    risk_contribution: 0.35
+    reason: high_mobile_transaction_amount
+  mobile_new_device:
+    enabled: true
+    risk_contribution: 0.35
+    reason: new_mobile_device
+  unusual_location:
+    enabled: true
+    trusted_ip_countries: [US]
+    risk_contribution: 0.40
+    reason: unusual_mobile_location
+  mobile_unusual_hour:
+    enabled: true
+    start_hour: 1
+    end_hour: 5
+    risk_contribution: 0.25
+    reason: mobile_transaction_at_unusual_hour
+  repeated_failed_attempts:
+    enabled: true
+    threshold: 4
+    risk_contribution: 0.40
+    decision: review
+    reason: repeated_failed_attempts
+  mobile_integrity_failure:
+    enabled: true
+    risk_contribution: 0.80
+    decision: decline
+    reason: mobile_device_integrity_check_failed
+  young_account_high_amount:
+    enabled: true
+    threshold: 750
+    max_account_age_days: 30
+    risk_contribution: 0.40
+    decision: review
+    reason: young_account_with_high_amount
